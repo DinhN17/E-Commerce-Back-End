@@ -33,13 +33,12 @@ router.post('/', async (req, res) => {
   // create a new tag
   /* req.body should look like this...
     {
-      "tag_name": "Black",
+      "tag_name": "Black"
     }
   */
   try {
     const tagData = await Tag.create(req.body);
     res.status(200).json(tagData);
-    
   } catch (error) {
     res.status(500).json(error);
   };
@@ -49,34 +48,19 @@ router.put('/:id', async (req, res) => {
   // update a tag's name by its `id` value
   /* req.body should look like this...
     {
-      "tag_name": "Black",
-      "productIds": [1, 2, 3]
+      "tag_name": "Green"
     }
   */
   try {
     const tagData = await Tag.update(
-      {
-        tag_name: req.body.tag_name
-      },
+      req.body,
       {
         where: {
           id: req.params.id
         }
       }
     );
-    if (req.body.productIds && req.body.productIds.length) {
-      const tagProducIdArr = req.body.productIds.map((product_id) => {
-        return {
-          tag_id: req.params.id,
-          product_id
-        }
-      });
-      const tagProducIds = await ProductTag.bulkCreate(tagProducIdArr);
-      res.status(200).json(tagProducIds);
-    } else {
-      res.status(200).json(tagData);
-      
-    };
+    res.status(200).json(tagData);
   } catch (error) {
     res.status(500).json(error);
   };
