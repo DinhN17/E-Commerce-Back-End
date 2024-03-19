@@ -26,7 +26,7 @@ Follow the below steps to install on local computer.
 
     ![Screenshot](Assets/images/Screenshot.PNG)
 
-    ![Video]
+    ![Video](https://drive.google.com/file/d/1Fqp5u_M9vAZ1ZdyMvXCae-ShHenYJG0E/view?usp=sharing)
 
 ## Credits
 
